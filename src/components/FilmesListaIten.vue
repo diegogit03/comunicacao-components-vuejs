@@ -1,39 +1,22 @@
 <template>
-    <div>
-        <input type="text" :value="titulo" :placeholder="$attrs.placeholder">
-    </div>
-    <!--<li class="list-group-item">
-        <span>{{ tituloConcatenado }} | {{ ano }}</span>
-        <button class="btn btn-success float-right">Selecionar</button>
-    </li>-->
+    <li class="list-group-item">
+        <span>{{ filme.titulo }} | {{ filme.ano }}</span>
+        <button @click="selecionar" class="btn btn-secundary float-right">Selecionar</button>
+    </li>
 </template>
 
 <script>
 export default {
-    inheritAttrs: false,
     props: {
-        titulo: {
-            type: String,
-            required: true
-            // default () {
-            //     return 'Vingadores'
-            // },
-            // validator (titulo) {
-            //     return titulo.includes('Marvel');
-            // }
-        },
-        ano: {
-            type: Number,
+        filme: {
+            type: Object,
             required: true
         }
     },
-    computed: {
-        tituloConcatenado () {
-            return `Titulo: ${this.titulo}`
+    methods: {
+        selecionar () {
+            this.$emit('selecionarFilme', this.filme);
         }
-    },
-    created () {
-        console.log('Attrs ', this.$attrs);
     }
 }
 </script>
