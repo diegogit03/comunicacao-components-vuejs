@@ -7,11 +7,16 @@
 
 <script>
 export default {
-    props: [ 'filmeTitulo' ],
+    props: {
+        filmeTitulo: String
+    },
     computed: {
         filmeTituloConcatenado () {
             return `Titulo: ${this.filmeTitulo}`
         }
+    },
+    created () {
+        console.log(typeof this.filmeTitulo);
     }
 }
 </script>
